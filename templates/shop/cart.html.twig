@@ -1,0 +1,73 @@
+{% extends 'frontBase.html.twig' %}
+
+{% block title %}hello Shop controller{% endblock %}
+
+{% block body %}
+
+<section class="page-top-section set-bg" data-setbg="{{ asset('front/img/page-top-bg/2.jpg') }}">
+    <div class="page-info">
+        <h2>Your cart</h2>
+        <div class="site-breadcrumb">
+            <a href="">Home</a>  
+            <span>Cart</span>
+
+        </div>
+      
+            
+             
+          
+        
+    </div>
+</section>
+<div class="games-section">
+    <div class="container">
+{%if items | length > 0%}
+    <table class="table table-dark">
+        <thead>
+            <tr><th>Picture</th>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th></th>
+                <th></th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+               <tr>
+                <td><img src="{{ asset('Products/'~item.product.picture) }}" width="100px" height="100px"></td>
+                   <td>{{item.product.name}}</td>
+                   <td>{{item.product.price}}</td>
+                   <td>{{item.quantity}}</td>
+                   <td>{{item.product.price * item.quantity}}</td>
+                   <td>
+                       <a href="{{ path('shop_remove' , {'id' : item.product.id})}}" class="btn btn-danger btn-sm">
+
+                    <i class="fas fa-trash"></i>
+                       </a>
+                   </td>
+               </tr>
+               {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td> <td></td><td></td>
+                <td colspan=""3 class="text-right"> Total :  </td>
+                <td>{{ total }}</td>
+                
+            </tr>
+        </tfoot>
+    </table>
+    {% else %}
+      <p> Surprise , C'est vide !</p>
+
+    {% endif %}
+    <div>
+        <a class="btn btn-success" href="{{ path("command_add") }}">Valider Panier</a>
+    </div>
+</div>
+</div>
+{% endblock %}
+  

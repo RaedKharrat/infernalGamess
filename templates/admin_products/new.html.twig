@@ -1,0 +1,55 @@
+{% extends 'backBase.html.twig' %}
+
+{% block body %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Products </h3>
+
+            </div>
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                            <div class="form-group">
+                                <label for="productName">Name</label>
+                                {{ form_widget(form.name,{'attr':{'class':'form-control', 'placeholder':'Name'}}) }}
+                                <div class="text-danger">{{ form_errors(form.name) }}</div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="productDescription">Description</label>
+                                {{ form_widget(form.description,{'attr':{'class':'form-control', 'placeholder':'Description'}}) }}
+                                 <div class="text-danger">{{ form_errors(form.description) }}</div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="productPrice">Price</label>
+                                {{ form_widget(form.price,{'attr':{'class':'form-control', 'placeholder':'Price'}}) }}
+                               <div class="text-danger">{{ form_errors(form.price) }}</div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="productQuantity">Quantity</label>
+                               {{ form_widget(form.quantity,{'attr':{'class':'form-control', 'placeholder':'Quantity'}}) }}
+                               <div class="text-danger">{{ form_errors(form.quantity) }}</div>
+
+
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="productQuantity">Picture</label>
+                               {{ form_widget(form.picture,{'attr':{'class':'form-control', 'placeholder':'picture'}}) }}
+                               <div class="text-danger">{{ form_errors(form.picture) }}</div>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <a href="{{asset('/admin/products')}}" class="btn btn-dark">Cancel</a>
+                        {{form_end(form)}}
+                    </div>
+                </div>
+            </div>
+{% endblock %}

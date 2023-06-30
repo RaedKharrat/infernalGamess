@@ -1,0 +1,69 @@
+    {% extends 'frontBase.html.twig' %}
+
+{% block title %}hello Shop controller{% endblock %}
+
+{% block body %}
+
+<section class="page-top-section set-bg" data-setbg="{{ asset('front/img/page-top-bg/2.jpg') }}">
+    <div class="page-info">
+        <h2>Your Wish List</h2>
+        <div class="site-breadcrumb">
+            <a href="">Home</a>  
+            <span>WishList</span>
+
+        </div>
+      
+            
+             
+          
+        
+    </div>
+</section>
+<div class="games-section">
+    <div class="container">
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Produit</th>
+                <th>Prix</th>
+               
+                <th></th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+               <tr>
+                   <td><img src="{{ asset('Products/'~item.product.picture) }}" width="100px" height="100px"></td>
+                   <td>{{item.product.name}}</td>
+                   <td>{{item.product.price}}</td>
+                  
+                <td> <a href="{{path("shop_add" ,{'id': item.product.id})}}"  class="btn btn-dark">
+                    <i class="bi bi-cart-plus"></i>
+                    Ajouter au Panier
+                </a></td>
+                <td>
+                    <a href="{{ path('list_remove' , {'id' : item.product.id})}}" >
+
+                        <img src="https://img.icons8.com/doodle/48/000000/--broken-heart.png" width="25px" height="25 px"/>
+                    </a>
+                </td>
+
+                  
+                   
+    
+               </tr>
+               {% endfor %}
+
+        </tbody>
+       
+    </table>
+    
+    
+</div>
+</div>
+{% endblock %}
+  

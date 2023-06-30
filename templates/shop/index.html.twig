@@ -1,0 +1,109 @@
+{% extends 'frontBase.html.twig' %}
+
+{% block title %}- Shop{% endblock %}
+
+{% block body %}
+
+
+
+
+    <!-- Page top section -->
+    <section class="page-top-section set-bg" data-setbg="{{ asset('front/img/page-top-bg/1.jpg') }}">
+        <div class="page-info">
+            <h2>Products</h2>
+            <div class="site-breadcrumb">
+                <a href="{{ asset('/') }}">Home</a>  
+                <span>products</span>
+            </div>
+        </div> 
+    </section>
+    <!-- Page top end-->
+
+
+
+
+    <!-- Games section -->
+    <section class="games-section">
+        <div class="container">
+            <div class="game-filter">
+
+                <!-- ******** Yosra NOTE ******** -->
+                <!-- Recherche lehne a3mlou-->
+                <form class="contact-form" method="post" action="{{ path('search')}}">
+                    <div class="row">
+                    <div class="col"> <input type="text" name="search" placeholder="Search"></div>
+                    <div class="col"><img src="{{ asset('front/img/icons/double-arrow.png') }}" alt="#"/>
+                        <li class="breadcrumb-item"><button class="btn btn-dark" type="submit"  value="search">Search </button></li>
+                    </ol>
+                </div>
+                        <div class="col"><a href="{{ asset('/shop/cart') }}" class="site-btn">Check your cart <img src="{{ asset('front/img/icons/shopping-cart.png') }}" alt="#" style="height: 16px; width: 16px"/></a></div>
+                    </div>
+                </div>
+              
+                <div class="col"><a href="{{ asset('/wishlist/viewlist') }}" class="site-btn">Check your wishList <img src="{{ asset('front/img/icons/shopping-cart.png') }}" alt="#" style="height: 16px; width: 16px"/></a></div>
+            </div>
+              <div><h2>. </h2></div>
+                </form>
+
+            </div>
+
+            <!-- ******** Yosra NOTE ******** -->
+            <div class="row">
+                <!-- ******** Products list ******** -->
+                <div class="col-xl-7 col-lg-8 col-md-7">
+                    <div class="row">
+                        <!-- ********Yosra NOTE ******** -->
+                       
+
+                        {% for product in products %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="game-item">
+                                    <!-- ******** Taswiret elgame ******** -->
+                                    <img src="{{ asset('Products/'~product.picture) }}" alt="#" style="height: 200px">
+                                    <h5>{{ product.name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{product.price}} Dt</h5>
+                                    
+                                    <a href="{{path("shop_add" ,{'id': product.id})}}"  class="btn btn-dark">
+                                        <i class="bi bi-cart-plus"></i>
+                                        Ajouter au Panier
+                                    </a>
+                                    <!-- ******** href  ******** -->
+                                    <a href="{{ path('viewProduct',{'id':product.id}) }}" class="read-more">Check it out 
+                                     <img src="{{ asset('front/img/icons/double-arrow.png') }}" alt="#"/></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="site-pagination">
+                        <a href="#" class="active">01.</a>
+                        <a href="#">02.</a>
+                        <a href="#">03.</a>
+                    </div>
+                </div>
+              
+                <!-- ******** Yosra NOTE ******** -->
+                <!-- ******** Recherche par category lehné ******** -->
+                
+            </div>
+        </div>
+    </section>
+    <!-- Games end-->
+
+
+    <!-- Featured section -->
+    <section class="featured-section">
+        <div class="featured-bg set-bg" data-setbg="{{ asset('front/img/featured-bg.jpg') }}"></div>
+        <div class="featured-box">
+            <div class="text-box">
+                <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                <h3>The game you’ve been waiting  for is out now</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus...</p>
+                <a href="#" class="read-more">Read More <img src="img/icons/double-arrow.png" alt="#"/></a>
+            </div>
+
+        </div>
+    </section>
+    <!-- Featured section end-->
+
+
+
+{% endblock %}
